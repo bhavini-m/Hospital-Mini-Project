@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Sign-In</title>
+
+  <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/loginstyle.css" media="screen" type="text/css" />
+<style type="text/css">
+	body{
+	background-image: url(images/SS1.jpg);
+}	
+.login-card{
+	background-color: #03296d;
+	color:white;
+	opacity:0.90;
+}
+.login-card a{
+	color:white;
+	opacity:1;
+}
+.login-submit{
+	background-color:rgb(245,124,35);
+}
+.logo{
+		font-family:Courier New;
+
+	}
+
+</style>
+<script>
+$(document).ready(function(){
+    $("#dept").hide();
+    $(".user-type").change(function(){
+	$("#dept").toggle();
+    });
+});
+</script>
+
+<script>
+				function checkForm(form)
+		  {
+			  if(form.name.value == "") {
+			  alert("Error: Username cannot be blank!");
+			  form.name.focus();
+			  return false;
+			}
+			re = /^\w+$/;
+			if(!re.test(form.name.value)) {
+			  alert("Error: Username must contain only letters, numbers and underscores!");
+			  form.name.focus();
+			  return false;
+			}
+			
+			if(form.email.value == "") {
+			  alert("Error: Email cannot be blank!");
+			  form.email.focus();
+			  return false;
+			}
+			
+			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
+			if (!re.test(form.email.value))
+			{
+				alert("You have entered an invalid email address!");
+				form.email.focus();
+				return (false);
+			}
+			
+			if(form.mobile.value.length != 10) {
+				alert("Error: Mobile No. must contain exactly ten digits!");
+				form.mobile.focus();
+				return false;
+			  }
+			
+			//*var usertype= "<?php echo $_SESSION["usertype"]?>" ;
+			
+			
+			  
+			if(form.password.value != "" && form.password.value == form.pwd2.value) 
+			{
+			  if(form.password.value.length < 6) {
+				alert("Error: Password must contain at least six characters!");
+				form.password.focus();
+				return false;
+			  }
+			  if(form.password.value == form.name.value) {
+				alert("Error: Password must be different from Username!");
+				form.password.focus();
+				return false;
+			  }
+			  re = /[0-9]/;
+			  if(!re.test(form.password.value)) {
+				alert("Error: password must contain at least one number (0-9)!");
+				form.password.focus();
+				return false;
+			  }
+			  re = /[a-z]/;
+			  if(!re.test(form.password.value)) {
+				alert("Error: password must contain at least one lowercase letter (a-z)!");
+				form.password.focus();
+				return false;
+			  }
+			  re = /[A-Z]/;
+			  if(!re.test(form.password.value)) {
+				alert("Error: password must contain at least one uppercase letter (A-Z)!");
+				form.password.focus();
+				return false;
+			  }
+			} 
+			else 
+			{
+			  alert("Error: Please check that you've entered and confirmed your password!");
+			  form.password.focus();
+			  return false;
+			}
+		  }
+
+</script>
+
+</head>
+
+<body>
+  <br>
+  <div class="login-card">
+  	<h1><a href="home.html">SOMAIYA HOSPITAL</a></h1>
+   <h1>Sign-in</h1>
+  <form onsubmit="return checkForm(this);" method="POST" action="signindb.php">
+	<input type="text" name="name" placeholder="Name">
+	<br>
+	<input type="text" name="email" placeholder="E-mail">
+	<br>
+	<input type="text" name="mobile" placeholder="Mobile No.">
+		<br><br>
+	Gender
+	<br>
+	<input type="radio" name="gender" value="male" checked> Male
+	<input type="radio" name="gender" value="female"> Female
+		<br> <br>
+		User type &nbsp &nbsp &nbsp &nbsp<select name="usertype" class="user-type">
+  	<option value="patient">Patient</option>
+  	<option value="doctor">Doctor</option>
+    </select><br> <br>
+	 <div id="dept" name="department">
+    	Department &nbsp &nbsp &nbsp &nbsp<select name="subject_taught">
+  	<option value="General Physiology">General Physiology</option>
+  	<option value="Cardiology">Cardiology</option>
+	<option value="Maternity">Maternity</option>
+	<option value="E.N.T.">E.N.T.</option>
+	</select><br> <br>
+	
+	<input type="int" name="ssn" placeholder="Employee Number (SSNo.)"> 
+	<br>
+   </div> <br>
+	<input type="password" name="password" placeholder="Enter your Password">
+	<br>
+	<input type="password" name="pwd2" placeholder="Confirm the Password">
+	<br>
+   
+    <input type="submit" name="Sign-in" class="login login-submit" value="Sign-in">
+  </form>
+</div>
+
+  <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
+
+</body>
+
+</html>

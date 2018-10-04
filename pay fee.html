@@ -1,0 +1,133 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<style type="text/css">
+body{ 
+margin: 0 auto; 
+width:800px;
+margin-top: 5%;
+}
+form{
+	border:1px solid black;
+	padding:15px;
+}
+</style>
+
+<script>
+				function checkForm(form)
+		  {
+			  if(form.fname.value == "") {
+			  alert("Error: Full Name cannot be blank!");
+			  form.name.focus();
+			  return false;
+			}
+			
+			re=/^[a-zA-Z ]+$/;
+			if(!re.test(form.fname.value))
+			{
+			alert('Please input alphabet characters only');
+			form.fname.focus();
+			return false;
+			}
+			
+			if(form.pemail.value == "") {
+			  alert("Error: Email cannot be blank!");
+			  form.pemail.focus();
+			  return false;
+			}
+			
+			
+			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
+			if (!re.test(form.pemail.value))
+			{
+				alert("You have entered an invalid email address!");
+				form.pemail.focus();
+				return (false);
+			}
+			
+			if(form.fdate.value == "") {
+			  alert("Error: Date cannot be blank!");
+			  form.adate.focus();
+			  return false;
+			}
+			
+			if(form.num.value == "") {
+			  alert("Error: Bed Number cannot be blank!");
+			  form.bnum.focus();
+			  return false;
+			}
+			
+			re=/^\d+$/;
+			if(!re.test(form.num.value))
+			{
+			alert('Please input number only');
+			form.fname.focus();
+			return false;
+			}
+			
+			if(form.amt.value == "") {
+			  alert("Error: Amount cannot be blank!");
+			  form.amt.focus();
+			  return false;
+			}
+			
+			re=/^\d+$/;
+			if(!re.test(form.amt.value))
+			{
+			alert('Please input number only');
+			form.amt.focus();
+			return false;
+			}
+	  
+			
+			
+		  }
+
+</script>
+
+
+</head>
+<body>
+
+	<h2>Fee Payment for admitted patients</h2>
+	<h3>Patient Details</h3>
+	<form onsubmit="return checkForm(this);" method="POST" action="pay fee.html" style="border:1px solid black,padding:10px">
+  <div class="form-group">
+    <label for="Inputname"> FULLNAME</label>
+    <input type="name" name="fname" class="form-control" id="examplename" aria-describedby="nameHelp" placeholder="Enter Full Name">
+  </div>
+  <div class="form-group">
+    <label for="Inputname"> E-mail</label>
+    <input type="name" name="pemail" class="form-control" id="examplename" aria-describedby="nameHelp" placeholder="Enter e-mail">
+  </div>
+  <div class="form-group">
+    <label for="Inputdate">DATE</label>
+    <input type="DATE" name="fdate" class="form-control" id="exampleInputPassword1" placeholder="DATE">
+  </div>
+   <div class="form-group">
+    <label for="Inputname"> Bed Number</label>
+    <input type="name" name="num" class="form-control" id="examplename" aria-describedby="nameHelp" placeholder="Enter the patient's bed no.">
+  </div>
+	<div class="form-group">
+    <label for="Inputname"> Amount</label>
+    <input type="name" name="amt" class="form-control" id="examplename" aria-describedby="nameHelp" placeholder="Enter amount to pay">
+  </div>
+ 
+<button type="submit" class="btn btn-primary">Proceed</button>
+</form>
+	
+	<br> 
+	<h3>Instructions for Online Payment</h3><hr>
+	<ul>
+		<li>Online payment can be made through CREDIT / DEBIT cards from the approved banks.
+		<li>Please enter the amount you have to pay.
+		<li>Proceed with your preferred mode of payment and follow the onscreen instructions to complete your transfer.
+		<li>Once the payment is done temporary receipt will be generated.	
+	</ul>
+	
+	 <script src='http://codepen.io/assets/libs/fullpage/jquery_and_jqueryui.js'></script>
+
+</body>
+</html>

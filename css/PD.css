@@ -1,0 +1,33 @@
+
+*{
+  box-sizing: border-box;
+}
+header{
+ font-size:1.2em; 
+} 
+.H{   
+display:inline;
+ font-size:1.9em; 
+ top:25px;
+ left:25px;
+   }
+ .header{ 
+  position:sticky;
+  background-color:#03296d; 
+  color:white;  
+  padding: 8px 0px;
+}
+.user{
+  display:inline;
+float:right;
+padding-top: 10px;
+padding-right: 20px;
+}
+
+/*sidenavbar Styles*/
+body {
+    font-family: "Lato", sans-serif;
+}
+.new{
+  width:250px;
+}

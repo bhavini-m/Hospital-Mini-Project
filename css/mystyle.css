@@ -1,0 +1,93 @@
+header{
+ font-size:1.2em; 
+} 
+.H{   
+  position: relative;
+ font-size:1.9em; 
+ top:25px;
+ left:25px;
+   }
+ .hehe{ 
+  background-color:#03296d; 
+  color:white;  
+}
+ .nav-link{   
+  color-white;
+   }
+  .navbar-default{
+color-white;
+}   
+li{ 
+  padding-right: 15px; 
+   }
+ .slideshow{
+  height:10%;
+  border:1px solid white;
+ 	
+  margin-top: 0px;
+}
+.S1{
+  width:100%;
+  opacity:0.8;
+}
+.question{
+ position:relative;
+left:800px;
+bottom:15px;
+width:30%;
+} 
+.btn-outline-success{
+color:white;
+border-color: transparent;
+}
+.btn:hover{
+  background-color:rgb(245,124,35);
+ 
+  border-color:rgb(245,124,35); 
+}
+.nav-link{
+  border-radius: 3px;
+}
+.nav-link:hover{
+ background-color: rgb(245,124,35); 
+ color:#03296d;
+}
+a:hover{
+	 color:#03296d;
+}
+.top-footer{
+ background-color: #03296d;
+ color:white;
+ border-bottom: 1px solid #03296d  ;
+}
+.footer-line{
+  color:white;
+  background-color: #03296d;
+}
+.btn-form{
+background-color:#03296d;
+}
+.btn-form:hover{
+text:rgb(245,124,35);
+}
+.navbar{
+background-color:#03296d;
+}
+div.sticky {
+  position: sticky;
+  top: 0; 
+  z-index: 1;
+}
+.navbar{
+background-color:#03296d;
+}
+.icon i{
+  color:#03296d;
+}
+.fa-home{
+padding-right:10px;
+color:white;
+}
+.ins{
+  float:right;
+}
