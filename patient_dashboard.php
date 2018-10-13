@@ -6,15 +6,15 @@ if($link === false){
 }
 if(isset($_POST["Book"]))
 {
-$name=$_POST['name'];
+$fname=$_POST['fname'];
 $email=$_POST["email"];
 $date1=$_POST["adate"];
 $sym=$_POST["psymptom"];
 $dept=$_POST["dept"];
-$time1=$_POST["lol"];
+$time1=$_POST["atime"];
 
-$sql = "INSERT INTO appointment (name, Email, date1, Symptoms ,department, time1) 
-    VALUES ('$name','$email','$date1','$sym', '$dept','$time1')";
+$sql = "INSERT INTO appointment (fname, Email, date1, Symptoms ,department, time1) 
+    VALUES ('$fname','$email','$date1','$sym', '$dept','$time1')";
  
 if(mysqli_query($link, $sql))
 {

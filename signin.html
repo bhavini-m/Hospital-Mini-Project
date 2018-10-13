@@ -44,17 +44,30 @@ $(document).ready(function(){
 <script>
 				function checkForm(form)
 		  {
-			  if(form.name.value == "") {
-			  alert("Error: Username cannot be blank!");
+			  if(form.fname.value == "") {
+			  alert("Error: First name cannot be blank!");
 			  form.name.focus();
 			  return false;
 			}
 			re = /^\w+$/;
-			if(!re.test(form.name.value)) {
-			  alert("Error: Username must contain only letters, numbers and underscores!");
+			if(!re.test(form.fname.value)) {
+			  alert("Error: First name must contain only letters, numbers and underscores!");
 			  form.name.focus();
 			  return false;
 			}
+			
+			if(form.lname.value == "") {
+			  alert("Error: Last name cannot be blank!");
+			  form.name.focus();
+			  return false;
+			}
+			re = /^\w+$/;
+			if(!re.test(form.lname.value)) {
+			  alert("Error: Last name must contain only letters, numbers and underscores!");
+			  form.name.focus();
+			  return false;
+			}
+			
 			
 			if(form.email.value == "") {
 			  alert("Error: Email cannot be blank!");
@@ -129,7 +142,9 @@ $(document).ready(function(){
   	<h1><a href="home.html">SOMAIYA HOSPITAL</a></h1>
    <h1>Sign-in</h1>
   <form onsubmit="return checkForm(this);" method="POST" action="signindb.php">
-	<input type="text" name="name" placeholder="Name">
+	<input type="text" name="fname" placeholder="First Name">
+	<br>
+	<input type="text" name="lname" placeholder="Last Name">
 	<br>
 	<input type="text" name="email" placeholder="E-mail">
 	<br>
@@ -145,7 +160,7 @@ $(document).ready(function(){
   	<option value="doctor">Doctor</option>
     </select><br> <br>
 	 <div id="dept" name="department">
-    	Department &nbsp &nbsp &nbsp &nbsp<select name="subject_taught">
+    	Department &nbsp &nbsp &nbsp &nbsp<select name="department">
   	<option value="General Physiology">General Physiology</option>
   	<option value="Cardiology">Cardiology</option>
 	<option value="Maternity">Maternity</option>

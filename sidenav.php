@@ -98,11 +98,11 @@ padding-left: 50px;
   </span>
   <div class="dropdown-container">
     <a href="#">Book</a>
-    <a href="#">check status</a>
+    <a href="#">Check Status</a>
   </div>
-  <li class="list-item"><a href="#">CHECK REPORTS</a></li>
-  <li class="list-item"><a href="#">PAY</a></li>
-  <li class="list-item"><a href="#">LOGOUT</a></li>
+  <li class="list-item"><a href="#">Check Reports</a></li>
+  <li class="list-item"><a href="pay_fee.html">Pay</a></li>
+  <li class="list-item"><a href="logout.php">Logout</a></li>
 
 </div>
 <script>
