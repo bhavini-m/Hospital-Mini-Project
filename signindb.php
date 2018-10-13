@@ -1,4 +1,74 @@
+
 <?php
+session_start();
+
+$servername = "127.0.0.1";
+$username = "root";
+$password = "";
+$dbname = "hospital";
+
+$con = mysqli_connect($servername, $username, $password, $dbname);
+
+if($con == NULL){
+	echo" connection failed";
+}else{
+	echo " connection"; 
+}
+
+mysqli_select_db($con, 'hospital');
+
+$fname = $_POST['fname'];
+$lname = $_POST['lname'];
+$email = $_POST['email'];
+$mobile = $_POST['mobile'];
+$gender = mysqli_real_escape_string($con, $_POST['gender']);
+$password = mysqli_real_escape_string($con, $_POST['password']);
+$hash_pass=hash('sha512',$password);
+$usertype = $_POST['usertype'];
+$dept = $_POST['department'];
+$ssn = $_POST['ssn'];
+
+if($usertype == "patient"){
+$usertype = "patient";
+}else{
+$usertype = "doctor";
+}
+
+echo $usertype;
+
+$q = " select * from $usertype where email = '$email' && password = '$password' ";
+$result = mysqli_query($con, $q);
+$num = mysqli_num_rows($result);
+
+
+
+if($num == 1){
+	echo" duplicate data ";
+}else{
+	if($usertype == "patient") {
+		
+		$qy= " insert  into patient(fname , lname, mobile_number, email, password , gender ) values ('$fname' , '$lname', '$mobile', '$email', '$password' , '$gender' ) ";
+	}else {
+		$q1 = " select * from admin where ssn = '$ssn' ";
+		$result1 = mysqli_query($con, $q1);
+		$num1 = mysqli_num_rows($result1);
+		if ($num1 == 1)
+		{
+		$qy = " insert into doctor(fname, lname , email, password , department, mobile_number, gender) values ('$fname', '$lname', '$email', '$password', '$dept', '$mobile', '$gender') "; 	
+		}
+		else
+		{
+			
+		}
+	}
+	mysqli_query($con, $qy);
+	$_SESSION['user'] = $fname;
+	header('location:Login.php');
+}
+
+mysqli_close($con);
+
+/*
 session_start();
 $link = mysqli_connect("localhost", "root", "", "hospital");
  
@@ -34,7 +104,7 @@ echo $usertype;
 $result = mysqli_query($con, $q);
 
 $num = mysqli_num_rows($result);
-*/
+
 
 	if ($usertype=="patient")
 	{
@@ -62,5 +132,6 @@ echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 } 
 
 mysqli_close($link);
+*/
 
 ?>

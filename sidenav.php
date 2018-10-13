@@ -19,34 +19,105 @@
     transition: 0.5s;
 }
 .sidenav a {
-    padding: 8px 8px 8px 32px;
+    padding: 6px 6px 6px 30px;
     text-decoration: none;
-    font-size: 25px;
-    color: #818181;
+    font-size: 20px;
+    color: white;
     display: block;
     transition: 0.3s;
+
+}
+.dropdown-btn {
+    padding: 6px 6px 6px 30px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+     font-size: 20px;
+    display: block;
+    width: 250px;
+    text-align: left;
+    cursor: pointer;
+    margin:0px 5px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
 }
 
-.sidenav a:hover {
-    color: #f1f1f1;
+.sidenav a:hover ,.sidenav span:hover{
+    background-color: rgb(245,124,35);
+    color: white;
 }
 
-.closebtn {
-    position: absolute;
-    top: 100px;
-    right: 25px;
-  
+li{
+  margin:0px;
+  list-style-type: none;
 }
+.list-item {
+  margin:0px 5px;
+}
+/*.inside li{
+list-style-type: none;
+color:white;
+}
+.inside{
+  display:none;
+}*/
+
+.dropdown-container {
+    display: none;
+    padding-left:10px;
+    background-color: #03296d;
+    transition:5s;
+   
+}.dropdown-container a{
+padding-left: 50px;
+}
+
 
 </style>
 
 
 <div id="mySidenav" class="sidenav" style="width:0px">
- 
-  <a href="#">Appointment</a>
-  <a href="#">CHECK REPORTS</a>
-  <a href="#">PAY</a>
-  <a href="#">LOGOUT</a>
+     
+  <!--   <div class="list-item dropdown-btn">
+      <button href="#">Appointment</button>
+    <ul class="inside">
+      <li class="list-item"><a>Book Appointment</a></li>   
+      <li class="list-item"><a>check status</a></li>
+    </div> -->
+    <div class="pro-image">
+      
+    </div>
+    <li class="list-item"><a href="#">YOUR PROFILE</a></li>
+ <span class="dropdown-btn ">Appointment 
+    <i class="fa fa-caret-down"></i>
+  </span>
+  <div class="dropdown-container">
+    <a href="#">Book</a>
+    <a href="#">check status</a>
+  </div>
+  <li class="list-item"><a href="#">CHECK REPORTS</a></li>
+  <li class="list-item"><a href="#">PAY</a></li>
+  <li class="list-item"><a href="#">LOGOUT</a></li>
+
 </div>
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
 
-
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>

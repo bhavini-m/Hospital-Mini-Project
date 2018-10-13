@@ -14,9 +14,11 @@ display:inline;
    }
  .header{ 
   position:sticky;
+  top:0;
   background-color:#03296d; 
   color:white;  
   padding: 8px 0px;
+  z-index: 1; 
 }
 </style>
 
