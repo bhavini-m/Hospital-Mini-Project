@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2018 at 07:17 AM
--- Server version: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Generation Time: Oct 13, 2018 at 12:26 PM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,8 +19,70 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `_hospital`
+-- Database: `hospital`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `email` varchar(50) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `status` varchar(8) NOT NULL DEFAULT 'inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`email`, `password`, `status`) VALUES
+('admin@gmail.com', 'Admin@123', 'inactive');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointment`
+--
+
+CREATE TABLE `appointment` (
+  `fname` varchar(40) NOT NULL,
+  `lname` varchar(40) NOT NULL,
+  `Email` varchar(40) NOT NULL,
+  `date1` date NOT NULL,
+  `Symptoms` text NOT NULL,
+  `department` varchar(40) NOT NULL,
+  `time1` varchar(40) NOT NULL,
+  `status` varchar(10) NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `department`
+--
+
+CREATE TABLE `department` (
+  `name` varchar(60) NOT NULL,
+  `short` varchar(10) NOT NULL,
+  `hod` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`name`, `short`, `hod`) VALUES
+('Analysis of Algorithms', 'AOA', 'COMP'),
+('Analysis of Algorithms', 'AOA', 'IT'),
+('Computer Organisation Architecture', 'COA', 'IT'),
+('Data Networks', 'DN', 'COMP'),
+('Digital Communication Systems', 'DCN', 'COMP'),
+('Digital Communication Systems', 'DCN', 'IT'),
+('Operating Systems', 'OS', 'COMP'),
+('Relational Database Management Systems', 'RDBMS', 'COMP');
 
 -- --------------------------------------------------------
 
@@ -29,46 +91,40 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `doctor` (
-  `DSSN` int(11) NOT NULL,
-  `department` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `Degree` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `fname` varchar(40) NOT NULL,
+  `lname` varchar(40) NOT NULL,
+  `ssn` int(25) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `department` varchar(20) NOT NULL,
+  `mobile_number` text NOT NULL,
+  `gender` text NOT NULL,
+  `status` varchar(8) NOT NULL DEFAULT 'inactive'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `doctor`
+--
+
+INSERT INTO `doctor` (`fname`, `lname`, `ssn`, `email`, `password`, `department`, `mobile_number`, `gender`, `status`) VALUES
+('Anjali', 'Sharma', 12345, '', '', '', '', '', 'inactive');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `drug`
+-- Table structure for table `files`
 --
 
-CREATE TABLE `drug` (
-  `name` int(11) NOT NULL,
-  `mfg.date` date NOT NULL,
-  `exp.date` date NOT NULL,
-  `contents` text COLLATE utf8_unicode_ci NOT NULL,
-  `cost` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
+CREATE TABLE `files` (
+  `filename` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Table structure for table `labstaff`
+-- Dumping data for table `files`
 --
 
-CREATE TABLE `labstaff` (
-  `LSSN` int(11) NOT NULL,
-  `report` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nurse/ward staff`
---
-
-CREATE TABLE `nurse/ward staff` (
-  `WSSN` int(11) NOT NULL,
-  `wardno.` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `files` (`filename`) VALUES
+('Topic.docx');
 
 -- --------------------------------------------------------
 
@@ -77,113 +133,61 @@ CREATE TABLE `nurse/ward staff` (
 --
 
 CREATE TABLE `patient` (
-  `PSSN` int(11) NOT NULL,
-  `wardno.` int(11) NOT NULL,
-  `prescribed drugs` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `person`
---
-
-CREATE TABLE `person` (
-  `SSN` int(11) NOT NULL,
-  `First` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `Middle` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `Last` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
-  `age` int(11) NOT NULL,
-  `sex` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
-  `contact` varchar(10) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pharmacist`
---
-
-CREATE TABLE `pharmacist` (
-  `PSSN` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `receptioist`
---
-
-CREATE TABLE `receptioist` (
-  `RSSN` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `signin`
---
-
-CREATE TABLE `signin` (
-  `name` varchar(40) NOT NULL,
-  `email` varchar(40) NOT NULL,
-  `contact` int(10) NOT NULL,
-  `gender` varchar(5) NOT NULL,
-  `usertype` varchar(10) NOT NULL,
-  `department` varchar(10) NOT NULL,
-  `employee_ssn` int(5) NOT NULL,
-  `password` varchar(10) NOT NULL
+  `fname` varchar(40) NOT NULL,
+  `lname` varchar(40) NOT NULL,
+  `mobile_number` text NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(30) NOT NULL,
+  `gender` text NOT NULL,
+  `status` varchar(8) NOT NULL DEFAULT 'inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `signin`
+-- Dumping data for table `patient`
 --
 
-INSERT INTO `signin` (`name`, `email`, `contact`, `gender`, `usertype`, `department`, `employee_ssn`, `password`) VALUES
-('abcd', 'a@gufer.com', 2147483647, 'male', 'doctor', '', 0, 'c69d68a875'),
-('abc', 'abc@gmail.com', 2147483647, 'femal', 'student', '', 0, '7ba5165eef'),
-('abc', 'abc@gufer.com', 2147483647, '', '', '', 0, ''),
-('abcd', 'abcd@gufer.com', 2147483647, 'male', 'patient', '', 0, 'ea96b80fed'),
-('xyz', 'xyz@gmail.com', 2147483647, 'male', 'doctor', '', 0, 'c69d68a875');
+INSERT INTO `patient` (`fname`, `lname`, `mobile_number`, `email`, `password`, `gender`, `status`) VALUES
+('Anjali', 'Sharma', '9619139239', 'anjalis@gmail.com', 'Anjalis@123', 'female', 'active'),
+('Rahul', 'Punjabi', '9619139239', 'rahul@gmail.com', 'Rahulp@123', 'male', 'inactive');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `drug`
+-- Indexes for table `admin`
 --
-ALTER TABLE `drug`
-  ADD PRIMARY KEY (`name`);
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `nurse/ward staff`
+-- Indexes for table `appointment`
 --
-ALTER TABLE `nurse/ward staff`
-  ADD PRIMARY KEY (`WSSN`);
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`Email`);
 
 --
--- Indexes for table `person`
+-- Indexes for table `department`
 --
-ALTER TABLE `person`
-  ADD PRIMARY KEY (`SSN`);
+ALTER TABLE `department`
+  ADD PRIMARY KEY (`name`,`hod`);
 
 --
--- Indexes for table `pharmacist`
+-- Indexes for table `doctor`
 --
-ALTER TABLE `pharmacist`
-  ADD PRIMARY KEY (`PSSN`);
+ALTER TABLE `doctor`
+  ADD PRIMARY KEY (`ssn`,`email`,`department`);
 
 --
--- Indexes for table `receptioist`
+-- Indexes for table `files`
 --
-ALTER TABLE `receptioist`
-  ADD PRIMARY KEY (`RSSN`);
+ALTER TABLE `files`
+  ADD PRIMARY KEY (`filename`);
 
 --
--- Indexes for table `signin`
+-- Indexes for table `patient`
 --
-ALTER TABLE `signin`
+ALTER TABLE `patient`
   ADD PRIMARY KEY (`email`);
 COMMIT;
 

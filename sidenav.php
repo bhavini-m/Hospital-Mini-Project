@@ -92,12 +92,12 @@ padding-left: 50px;
     <div class="pro-image">
       
     </div>
-    <li class="list-item"><a href="#">YOUR PROFILE</a></li>
+    <li class="list-item"><a href="patient_dashboard.php">YOUR PROFILE</a></li>
  <span class="dropdown-btn ">Appointment 
     <i class="fa fa-caret-down"></i>
   </span>
   <div class="dropdown-container">
-    <a href="#">Book</a>
+    <a href="bapp.php">Book</a>
     <a href="#">Check Status</a>
   </div>
   <li class="list-item"><a href="#">Check Reports</a></li>
