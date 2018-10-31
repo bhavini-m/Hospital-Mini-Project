@@ -32,6 +32,7 @@ if($num == 1) {
 	$row = mysqli_fetch_assoc($result);
 	$_SESSION["email"] = $email;
 	$_SESSION["user"]= $row['fname'];
+	$_SESSION["lname"]=$row['lname'];
 	$_SESSION["usertype"] = "patient";
 	$q = "update patient set status = 'active' where email = '$email' ";
 	mysqli_query($con, $q);
@@ -55,7 +56,6 @@ else {
 	}
 	else 
 	{
-		//echo ("lol three");
 		$result = mysqli_query($con, $q3);
 		$num = mysqli_num_rows($result);
 		$row = mysqli_fetch_assoc($result);

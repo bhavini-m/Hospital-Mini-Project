@@ -4,17 +4,43 @@ $link = mysqli_connect("localhost","root", "", "hospital");
 if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
+
+if(isset($_POST["profile"])){
+  $imgset="set";
+  $_SESSION["pset"]="true";
+  $email=$_SESSION['email'];
+  $msg="";
+$sql="select * from profile where email='$email'";
+$result=mysqli_query($link,$sql);
+$num = mysqli_num_rows($result);
+$target="profile/".basename($_FILES["photo"]["name"]);
+$image=$_FILES["photo"]["name"];
+if($num==1){
+$sql="update profile SET photo='$image' where email='$email'";
+mysqli_query($link,$sql);
+if(move_uploaded_file($_FILES["photo"]["tmp_name"], $target))
+$msg="image uploaded";
+}
+else{
+$sql="INSERT INTO profile VALUES('$email','$image')";
+mysqli_query($link,$sql);
+if(move_uploaded_file($_FILES["photo"]["tmp_name"], $target))
+  $msg="image uploaded";
+}
+}
+
+
 if(isset($_POST["Book"]))
 {
 $fname=$_POST['fname'];
+$lname=$_POST['lname'];
 $email=$_POST["email"];
 $date1=$_POST["adate"];
 $sym=$_POST["psymptom"];
 $dept=$_POST["dept"];
 $time1=$_POST["atime"];
-
-$sql = "INSERT INTO appointment (fname, Email, date1, Symptoms ,department, time1) 
-    VALUES ('$fname','$email','$date1','$sym', '$dept','$time1')";
+$sql = "INSERT INTO appointment (fname,lname, Email, date1, Symptoms ,department, time1) 
+    VALUES ('$fname','$lname','$email','$date1','$sym', '$dept','$time1')";
  
 if(mysqli_query($link, $sql))
 {
@@ -66,7 +92,23 @@ if(mysqli_query($link, $sql))
   }
   .update{
     height:50%;
-    border:1px solid black;
+    border:3px solid  #03296d;
+    position:relative;
+    
+  }
+  .top{
+    font-size:20px;
+    border:2px solid  #03296d;
+    width:30%;
+    background-color: #03296d;
+    color:white ;
+    padding:3px;
+    border-radius:10px;
+    position: relative;
+    top:-20px;
+    left:10px;
+    z-index:1;
+
   }
 </style>
 <!DOCTYPE html>
@@ -81,9 +123,9 @@ if(mysqli_query($link, $sql))
 
 <?php include("includes/head.php");  ?>
 
-<div id="main">
+<div id="main" style="margin-left:250px">
 <span class="ham" style="font-size:25px;padding-left:5px;cursor:pointer;position: fixed;" onclick="openNav()">&#9776;</span>
- <?php include("sidenav.php"); ?> 
+ <?php include("sidenav.php"); ?>  
   <br>
   <br>
   <div class="left">
@@ -97,9 +139,19 @@ if(mysqli_query($link, $sql))
 
 </div>
 </div>
+
+<!-- profile updation -->
 <div class="update left">
-<p>here is the section for profile updation</p>
+<div class="top">Update profile</div>
+<div>
+<p>upload or change profile photo</p>
+<form action="patient_dashboard.php" method="POST" enctype="multipart/form-data">
+  <input type="file" name="photo"><br><br>
+  <input type="submit" name="profile">
+</form>
 </div>
+</div>
+
 
 </div>
 <div class="footer">

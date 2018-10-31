@@ -1,4 +1,4 @@
-<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+  <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="css/loginstyle.css" media="screen" type="text/css" />
   <script>
@@ -85,7 +85,9 @@ $(document).ready(function(){
 <div class="login-card">
     <h2>APPOINTMENT FORM</h2>
 <form onsubmit="return checkForm(this);"  method="POST" action="patient_dashboard.php"style="border:1px solid black,padding:10px">
-  <input type="text" placeholder="username" name="fname" value=<?php echo $_SESSION['user']; ?> >
+  <input type="text" placeholder="firstrname" name="fname" value=<?php echo $_SESSION['user']; ?> >
+  <input type="text" placeholder="lastname" name="lname" value=<?php echo 
+$_SESSION['lname']; ?> >
 <br>
 	<input type="text" name="email" placeholder="E-mail" value=<?php echo $_SESSION['email']; ?>>
 	<br>
@@ -108,15 +110,15 @@ $(document).ready(function(){
 </div>
  <label>What time would you prefer</label><br>
 <div class="form-check form-check-inline">
-  <input  type="radio" name="atime" checked>
+  <input  type="radio" name="atime"  value="morning">
   <label class="form-check-label" for="inlineCheckbox1">Morning</label>
 </div>
 <div class="form-check form-check-inline">
-  <input  type="radio" name="atime">
+  <input  type="radio" name="atime" value="Afternoon">
   <label class="form-check-label" for="inlineCheckbox2">Afternoon</label>
 </div>
 <div class="form-check form-check-inline">
-  <input  type="radio" name="atime"  >
+  <input  type="radio" name="atime" value="Evening">
   <label class="form-check-label" for="inlineCheckbox3">Evening</label>
 </div><br><br>
 <input type="submit" name="Book" class="login login-submit">

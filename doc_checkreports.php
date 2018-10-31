@@ -1,5 +1,11 @@
 <?php
 session_start();
+$link = mysqli_connect("localhost","root", "", "hospital");
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+
+
 ?>
 <style type="text/css">
   
@@ -10,8 +16,6 @@ session_start();
   }
 
   .footer{
-    position: fixed;
-    bottom:0;
     text-align:center;
     background-color: #03296d;
     padding:5px 0px 5px 0px;
@@ -29,11 +33,20 @@ session_start();
 <link rel="stylesheet" type="text/css" href="css/PD.css">
 </head>
 <body>
- <?php include("sidenav.php"); ?> 
-<?php include("includes/head.php"); ?>
-<div id="main" style="margin-left:250px">
+
+<?php include("includes/head.php");  ?>
+
+<div id="main" style="width:0px";>
 <span class="ham" style="font-size:25px;padding-left:5px;cursor:pointer;position: fixed;" onclick="openNav()">&#9776;</span>
-<?php include("appointment.php");?>
+
+ <?php include("doc_sidenav.php"); ?> 
+
+
+<div style="padding-top:125px" class=content>
+  <br>
+<?php include("reports.php");?>
+</div> 
+
 
 </div>
 <div class="footer">

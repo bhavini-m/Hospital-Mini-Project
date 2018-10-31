@@ -76,43 +76,26 @@ color:white;
 }.dropdown-container a{
 padding-left: 50px;
 }
-.pro-image{
-margin-left: 50px;
 
-}
 
 </style>
 
 
 <div id="mySidenav" class="sidenav" style="width:250px">
-    <div class="pro-image">
-      <?php 
-      $email=$_SESSION['email'];
-
-      $sql="select * from profile where email='$email'";
-      $result=mysqli_query($link,$sql);
-      $num = mysqli_num_rows($result);
-      if($num==1)
-      {
-        $row=mysqli_fetch_assoc($result);
-        echo"<img src='profile/".$row['photo']."'width='120px' height='120px'>";
-      }
-      else{
-      echo"<img src='profile/default.png' width='120px' height='120px'>";
-     }
-     ?>
-     </div>
-    <li class="list-item"><a href="patient_dashboard.php">YOUR PROFILE</a></li>
- <span class="dropdown-btn ">Appointment 
+   
+   <li class="list-item"><a href="doctor_dashboard.php">YOUR PROFILE</a></li>
+ <!-- <span class="dropdown-btn ">PATIENTS 
     <i class="fa fa-caret-down"></i>
   </span>
   <div class="dropdown-container">
     <a href="bapp.php">Book</a>
     <a href="#">Check Status</a>
-  </div>
-  <li class="list-item"><a href="#">Check Reports</a></li>
+  </div> -->
+  <li class="list-item"><a href="doc_pat.php">MYPATIENTS</a></li>
   <li class="list-item"><a href="pay_fee.html">Pay</a></li>
   <li class="list-item"><a href="logout.php">Logout</a></li>
+
+</div>
 
 </div>
 <script>
