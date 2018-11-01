@@ -87,6 +87,7 @@ margin-left: 50px;
 <div id="mySidenav" class="sidenav" style="width:250px">
     <div class="pro-image">
       <?php 
+      $link = mysqli_connect("localhost","root", "", "hospital");
       $email=$_SESSION['email'];
 
       $sql="select * from profile where email='$email'";

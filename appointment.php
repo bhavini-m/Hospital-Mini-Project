@@ -1,4 +1,4 @@
-  <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
+ <link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="css/loginstyle.css" media="screen" type="text/css" />
   <script>
@@ -62,23 +62,22 @@ $(document).ready(function(){
       
       
       }
-
 </script>
 <style type="text/css">
 .login-card{
-	background-color: #03296d;
-	color:white;
-	opacity:0.90;
+  background-color: #03296d;
+  color:white;
+  opacity:0.90;
   margin-left: 300px;
   width:650px;
 }
 .login-card a{
-	color:white;
-	opacity:1;
+  color:white;
+  opacity:1;
 }
 .login-submit{
-	background-color:rgb(245,124,35);
-	opacity:1;
+  background-color:rgb(245,124,35);
+  opacity:1;
 }
 </style>
 
@@ -89,9 +88,9 @@ $(document).ready(function(){
   <input type="text" placeholder="lastname" name="lname" value=<?php echo 
 $_SESSION['lname']; ?> >
 <br>
-	<input type="text" name="email" placeholder="E-mail" value=<?php echo $_SESSION['email']; ?>>
-	<br>
-	 <label for="date">Enter date</label>
+  <input type="text" name="email" placeholder="E-mail" value=<?php echo $_SESSION['email']; ?>>
+  <br>
+   <label for="date">Enter date</label>
    <input type="DATE" name="adate"  placeholder="DATE"> 
 <br><br>
     <label for="Symptoms">Symptoms</label>
@@ -99,7 +98,7 @@ $_SESSION['lname']; ?> >
    
   <div class="dropdown">
   <label>Choose your department   </label><br>
-  </button>
+ 
   <select name="dept">
     <option class="dropdown-item">Cardiology</option>
     <option class="dropdown-item">Maternity ward</option> 
@@ -108,6 +107,26 @@ $_SESSION['lname']; ?> >
   </select>
   <br> <br>
 </div>
+
+
+
+<div class="dropdown">
+  <label>Choose your Doctor</label><br>
+  <select name="dept">
+   <?php 
+   $sql="select * from doctor ";
+   $result =mysqli_query($link,$sql);
+   while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+      echo "<option>".$row['fname']."</option><br>";
+   }
+   ?> 
+  </select>
+  <br> <br>
+</div>
+
+
+
+
  <label>What time would you prefer</label><br>
 <div class="form-check form-check-inline">
   <input  type="radio" name="atime"  value="morning">

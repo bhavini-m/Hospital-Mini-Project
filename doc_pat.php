@@ -43,8 +43,11 @@ if($link === false){
 
 
 <div class=content>
-  
+  <?php 
+$sql="select * from appoinmtnt where  ";
 
+
+?>
 </div> 
 
 

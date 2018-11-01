@@ -22,7 +22,7 @@ if(move_uploaded_file($_FILES["photo"]["tmp_name"], $target))
 $msg="image uploaded";
 }
 else{
-$sql="INSERT INTO profile VALUES('$email','$image')";
+$sql="INSERT INTO profile VALUES('$email','$image','true')";
 mysqli_query($link,$sql);
 if(move_uploaded_file($_FILES["photo"]["tmp_name"], $target))
   $msg="image uploaded";
