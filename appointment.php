@@ -97,36 +97,27 @@ $_SESSION['lname']; ?> >
     <input type="text" name="psymptom" class="form-control" id="exampleSym" placeholder="Describe your problem">
    
   <div class="dropdown">
-  <label>Choose your department   </label><br>
+  <label>Choose your department   </label>
  
   <select name="dept">
     <option class="dropdown-item">Cardiology</option>
-    <option class="dropdown-item">Maternity ward</option> 
+    <option class="dropdown-item" value="loll" >Maternity ward</option> 
     <option class="dropdown-item">General physiology</option> 
     <option class="dropdown-item">ENT ward</option> 
   </select>
-  <br> <br>
+  <br> 
 </div>
-
-
-
-<div class="dropdown">
-  <label>Choose your Doctor</label><br>
-  <select name="dept">
-   <?php 
-   $sql="select * from doctor ";
-   $result =mysqli_query($link,$sql);
-   while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-      echo "<option>".$row['fname']."</option><br>";
-   }
-   ?> 
-  </select>
-  <br> <br>
-</div>
-
-
-
-
+<label>choose your doctor</label>
+    <select name="doc">
+      <?php 
+      $sql="select * from doctor";
+      $result=mysqli_query($link,$sql);
+      while($row = mysqli_fetch_assoc($result)){
+        echo"<option value=".$row['email'].">DR. ".$row['fname']." ".$row['lname']."</option>";
+      } 
+      ?>
+    </select>
+    <br>
  <label>What time would you prefer</label><br>
 <div class="form-check form-check-inline">
   <input  type="radio" name="atime"  value="morning">

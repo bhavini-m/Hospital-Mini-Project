@@ -6,8 +6,6 @@ if($link === false){
 }
 
 if(isset($_POST["profile"])){
-  $imgset="set";
-  $_SESSION["pset"]="true";
   $email=$_SESSION['email'];
   $msg="";
 $sql="select * from profile where email='$email'";
@@ -22,7 +20,7 @@ if(move_uploaded_file($_FILES["photo"]["tmp_name"], $target))
 $msg="image uploaded";
 }
 else{
-$sql="INSERT INTO profile VALUES('$email','$image','true')";
+$sql="INSERT INTO profile VALUES('$email','$image','set')";
 mysqli_query($link,$sql);
 if(move_uploaded_file($_FILES["photo"]["tmp_name"], $target))
   $msg="image uploaded";
@@ -38,15 +36,17 @@ $email=$_POST["email"];
 $date1=$_POST["adate"];
 $sym=$_POST["psymptom"];
 $dept=$_POST["dept"];
+$doc=$_POST['doc'];
 $time1=$_POST["atime"];
-$sql = "INSERT INTO appointment (fname,lname, Email, date1, Symptoms ,department, time1) 
-    VALUES ('$fname','$lname','$email','$date1','$sym', '$dept','$time1')";
+$sql = "INSERT INTO appointment (fname,lname, Email, date1, Symptoms ,department,docemail, time1) 
+    VALUES ('$fname','$lname','$email','$date1','$sym','$dept','$doc','$time1')";
  
 if(mysqli_query($link, $sql))
 {
- echo"added"; 
+ //appointment added 
 }
-
+echo "you know me";
+include("Email/appointmentfixed.php");
 }
 ?>
 <style type="text/css">
