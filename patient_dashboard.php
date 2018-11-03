@@ -26,28 +26,6 @@ if(move_uploaded_file($_FILES["photo"]["tmp_name"], $target))
   $msg="image uploaded";
 }
 }
-
-
-if(isset($_POST["Book"]))
-{
-$fname=$_POST['fname'];
-$lname=$_POST['lname'];
-$email=$_POST["email"];
-$date1=$_POST["adate"];
-$sym=$_POST["psymptom"];
-$dept=$_POST["dept"];
-$doc=$_POST['doc'];
-$time1=$_POST["atime"];
-$sql = "INSERT INTO appointment (fname,lname, Email, date1, Symptoms ,department,docemail, time1) 
-    VALUES ('$fname','$lname','$email','$date1','$sym','$dept','$doc','$time1')";
- 
-if(mysqli_query($link, $sql))
-{
- //appointment added 
-}
-echo "you know me";
-include("Email/appointmentfixed.php");
-}
 ?>
 <style type="text/css">
  *{

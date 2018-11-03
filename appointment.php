@@ -83,7 +83,7 @@ $(document).ready(function(){
 
 <div class="login-card">
     <h2>APPOINTMENT FORM</h2>
-<form onsubmit="return checkForm(this);"  method="POST" action="patient_dashboard.php"style="border:1px solid black,padding:10px">
+<form onsubmit="return checkForm(this);"  method="POST" action="bapp.php"style="border:1px solid black,padding:10px">
   <input type="text" placeholder="firstrname" name="fname" value=<?php echo $_SESSION['user']; ?> >
   <input type="text" placeholder="lastname" name="lname" value=<?php echo 
 $_SESSION['lname']; ?> >
