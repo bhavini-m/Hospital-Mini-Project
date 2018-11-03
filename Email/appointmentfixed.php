@@ -8,7 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 echo"here";
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-try {echo"here2 ";
+try {echo"here223232 ";
     //Server settings
     $mail->SMTPDebug = 0;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -17,12 +17,23 @@ try {echo"here2 ";
     $mail->Username = 'somaiyahospital@gmail.com';                 // SMTP username
     $mail->Password = 'hellofrand';                           // SMTP password
     $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 465;                                    // TCP port to connect to
+    $mail->Port = 465;  
+
+
+
+//$mail->isSMTP();
+//$mail->Host = 'relay-hosting.secureserver.net';
+//$mail->Port = 25;
+//$mail->SMTPAuth = false;
+//$mail->SMTPSecure = false;
+
+
+	// TCP port to connect to
 
     //Recipients
-    $mail->setFrom('somaiyahospital@gmail.com', 'Somaiya Hospital');
-    $mail->addAddress("rpunjabi900@gmail.com");     // Add a recipient
-    $mail->addReplyTo('somaiyahospital@gmail.com', 'Somaiya Hospital');
+    $mail->setFrom('somaiyahospital@gmail.com', 'Somaiya');
+    $mail->addAddress("rpunjabi900@gmail.com",'Rahul');     // Add a recipient
+    $mail->addReplyTo('somaiyahospital@gmail.com', 'Somaiya');
 
 
     //Content
@@ -50,5 +61,6 @@ try {echo"here2 ";
     $_SESSION['message'] = "email sent successfully";
 } catch (Exception $e) {
     $_SESSION['message'] = 'Email could not be sent. '. $mail->ErrorInfo;
+	echo $_SESSION['message'];
 }
 ?>
