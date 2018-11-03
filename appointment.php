@@ -101,7 +101,7 @@ $_SESSION['lname']; ?> >
  
   <select name="dept">
     <option class="dropdown-item">Cardiology</option>
-    <option class="dropdown-item" value="loll" >Maternity ward</option> 
+    <option class="dropdown-item">Maternity ward</option> 
     <option class="dropdown-item">General physiology</option> 
     <option class="dropdown-item">ENT ward</option> 
   </select>

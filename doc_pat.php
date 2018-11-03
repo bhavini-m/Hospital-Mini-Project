@@ -1,3 +1,15 @@
+<style>
+*{
+  box-sizing: border-box;   
+}
+
+.patient{
+ border:1px solid black;
+
+
+}
+</style>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <?php
 session_start();
 $link = mysqli_connect("localhost","root", "", "hospital");
@@ -5,7 +17,7 @@ if($link === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 ?>
-<style type="text/css">
+<style type="text/css"> 
   
 .ham{
   width:100px;
@@ -43,15 +55,66 @@ if($link === false){
 
 
 <div class=content>
-  <?php 
-$sql="select * from appoinmtnt where  ";
+  <br>
+  <br>
+  <!-- <?php 
+  $link = mysqli_connect("localhost","root", "", "hospital");
+  $email=$_SESSION['email'];
+$sql="select * from appointment where  docemail='$email' AND status='noo'";
+$result=mysqli_query($link,$sql);
+while($row=mysqli_fetch_assoc($result)){
+  echo $row['Email'];
+
+}
+?> -->
 
 
-?>
-</div> 
+
+<div class="container">
+    
+      <?php 
+  $link = mysqli_connect("localhost","root", "", "hospital");
+  $email=$_SESSION['email'];
+$sql="select * from appointment where  docemail='$email' AND status='noo'";
+$result=mysqli_query($link,$sql);
+  while($row=mysqli_fetch_assoc($result)){
+
+
+
+       echo'
+            <div class="row">
+            <div class="col-6 patient">
+            <div class="row">
+            <div class="col-5">
+            <img src="profile/default.png">
+            </div>
+          <div class="col-7">';
+          echo'<p>NAME: '.$row["fname"]." ".$row["lname"].'</p>';
+          echo'<p>EMAIL: '.$row["Email"].'</p>';
+          echo'<p>SYMPTOMS: '.$row["Symptoms"].'</p>';
+          echo'<p>TIME: '.$row["time1"].'</p>';
+          echo'<p>DATE: '.$row["date1"].'</p>';
+          ?><a href="#">show more</a>
+          </div>
+        </div>
+          </div>
+        </div>
+      <?php
+}?>
+
+    
+</div>
+
+
+
+
 
 
 </div>
+</div> 
+
+
+
 <div class="footer">
 <P> © Copyright RAHULPUNJABI TRUST. All Rights Reserved. </P>
 </div>
