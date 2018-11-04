@@ -4,9 +4,20 @@
 }
 
 .patient{
- border:1px solid black;
-
-
+ border:4px solid #03296d;
+border-radius:15px;
+margin-bottom:20px;
+margin-left:40px;
+background-color:#5F679D;
+color:white;
+}
+.patient a{
+  text-decoration: none;
+}
+h4{
+  margin-left:35px;
+padding-top:10px;
+color:white;
 }
 </style>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -35,6 +46,9 @@ if($link === false){
     bottom:0px;
 
   }
+  h4{
+    color:white;
+  }
 </style>
 <!DOCTYPE html>
 <html>
@@ -51,66 +65,13 @@ if($link === false){
 <div id="main" style="margin-left:250px";>
 <span class="ham" style="font-size:25px;padding-left:5px;cursor:pointer;position: fixed;" onclick="openNav()">&#9776;</span>
 
- <?php include("doc_sidenav.php"); ?> 
+ <?php 
 
+ include("doc_sidenav.php");
 
-<div class=content>
-  <br>
-  <br>
-  <!-- <?php 
-  $link = mysqli_connect("localhost","root", "", "hospital");
-  $email=$_SESSION['email'];
-$sql="select * from appointment where  docemail='$email' AND status='noo'";
-$result=mysqli_query($link,$sql);
-while($row=mysqli_fetch_assoc($result)){
-  echo $row['Email'];
+  include("allpatient.php"); 
 
-}
-?> -->
-
-
-
-<div class="container">
-    
-      <?php 
-  $link = mysqli_connect("localhost","root", "", "hospital");
-  $email=$_SESSION['email'];
-$sql="select * from appointment where  docemail='$email' AND status='noo'";
-$result=mysqli_query($link,$sql);
-  while($row=mysqli_fetch_assoc($result)){
-
-
-
-       echo'
-            <div class="row">
-            <div class="col-6 patient">
-            <div class="row">
-            <div class="col-5">
-            <img src="profile/default.png">
-            </div>
-          <div class="col-7">';
-          echo'<p>NAME: '.$row["fname"]." ".$row["lname"].'</p>';
-          echo'<p>EMAIL: '.$row["Email"].'</p>';
-          echo'<p>SYMPTOMS: '.$row["Symptoms"].'</p>';
-          echo'<p>TIME: '.$row["time1"].'</p>';
-          echo'<p>DATE: '.$row["date1"].'</p>';
-          ?><a href="#">show more</a>
-          </div>
-        </div>
-          </div>
-        </div>
-      <?php
-}?>
-
-    
-</div>
-
-
-
-
-
-
-</div>
+   ?>
 </div> 
 
 
