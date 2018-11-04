@@ -79,7 +79,7 @@ a:hover{
 
  include("doc_sidenav.php");
 
-  include("allpatient.php"); 
+  include("donepat.php"); 
 
    ?>
 </div> 

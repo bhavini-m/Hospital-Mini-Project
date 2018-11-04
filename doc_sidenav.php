@@ -109,7 +109,7 @@ margin-left: 50px;
   </span>
   <div class="dropdown-container">
     <a href="doc_pat.php">CURRENT APPOINTMENTS</a>
-    <a href="#">PREVIOUS PATIENTS</a>
+    <a href="done_pat.php">PREVIOUS PATIENTS</a>
   </div>
   <li class="list-item"><a href="#">Submit Reports</a></li>
   

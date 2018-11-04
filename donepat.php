@@ -15,12 +15,12 @@ a:link{
 }
 </style>
 <div class=content>
-  <h4>MY PATIENTS/CURRENT APPOINTMENTS</h4>
+<h4>Previous patients</h4>
  <hr>
 <?php 
   $link = mysqli_connect("localhost","root", "", "hospital");
   $email=$_SESSION['email'];
-$sql="select * from appointment where  docemail='$email' AND status='noo'";
+$sql="select * from appointment where  docemail='$email' and status='done'";
 $result=mysqli_query($link,$sql);
   while($row=mysqli_fetch_assoc($result)){
 
@@ -38,7 +38,9 @@ $result=mysqli_query($link,$sql);
           <div class="col-7"><br>';
           echo'<p>NAME: '.$row["fname"]." ".$row["lname"].'</p>';
           echo'<p>EMAIL: '.$row["Email"].'</p>';
-          echo'<a class="showw"href="view_pat.php?show='.$row["Email"].'">view patient</a>';
+          echo'<p>SYMPTOMS: '.$row["Symptoms"].'</p>';
+          echo'<p>TIME: '.$row["time1"].'</p>';
+          echo'<p>DATE: '.$row["date1"].'</p>';
           echo'</div></div></div></div>';
     }
 
