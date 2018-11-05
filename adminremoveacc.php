@@ -74,6 +74,18 @@ $_SESSION["admin_work"] = $admin_work;
 					<li>
                     	<a href="removeadmin.php">Remove Admin</a>
                 	</li>
+					
+					<li>
+                    	<a href="admindoc.php">View Doctors</a>
+                	</li>
+					
+					<li>
+                    	<a href="adminpat.php">View Patients</a>
+                	</li>
+					
+					<li>
+                    	<a href="adminchange.php">Change Data</a>
+                	</li>
             	</ul>
 
         	</div>

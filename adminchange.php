@@ -20,16 +20,16 @@ if($con == NULL){
 }
 
 mysqli_select_db($con, 'hospital');
-//selecting the task
-$admin_work = "add_account";
+$admin_work = "change_data";
 $_SESSION["admin_work"] = $admin_work;
 
 ?>
 
+
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Add faculty or student</title>
+		<title>Add subject</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap.css">
 		<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -38,24 +38,6 @@ $_SESSION["admin_work"] = $admin_work;
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
-
-		<script>
-				function checkForm(form)
-		  {
-			
-			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
-			if (!re.test(form.email.value))
-			{
-				alert("You have entered an invalid email address!");
-				form.email.focus();
-				return (false);
-			}
-			
-		  }
-
-		</script>
-		
 	</head>	
 
 	<body>
@@ -112,25 +94,22 @@ $_SESSION["admin_work"] = $admin_work;
 
         	</div>
 
+
         	<div class="content">
 			
-            		<h2 style="margin-left:40px;">Add a Doctor's Account to Somaiya Hospital</h2>
-			<form onsubmit="return checkForm(this);" action="adminactivity.php" method="POST" style="margin-left:40px; font-size:18px;"><br>
-				First Name <input type="text" placeholder="First Name" name="fname"><br><br>
-				Last Name  <input type="text" placeholder="Last Name" name="lname"><br><br>
-				Social Security No.<input type="text" placeholder="S.S.N number" name="ssn"><br><br>
-				<!--<div id="department">
-					Department
-					<select name="department">
-						<option value="CRD">Cardiology</option>
-  						<option value="GP">General Physiology</option>
-						<option value="ENT">Otolaryngology</option>
-  						<option value="MTN">Maternity</option>
- 					</select><br><br>
-				</div>
-				-->
+            		<h2 style="margin-left:40px;">Change Data on home page</h2>
+			<form action="adminactivity.php" method="POST" style="margin-left:40px; font-size:18px;"><br>
+				Our Dream<br><input type="text" placeholder="" name="dream"><br><br>
+				Vision<br><input type="text" name="vision" placeholder=""><br><br>
+				Mission<br><input type="text" name="mission" placeholder=""><br>
+				The Brand<br><input type="text" name="brand" placeholder=""><br><br>
+				24-hour Support<br><input type="text" name="support" placeholder=""><br><br>
+				Emergency Services<br><input type="text" name="emergency" placeholder=""><br><br>
+				Medical Counseling<br><input type="text" name="counseling" placeholder=""><br><br>
+				Premium Healthcare<br><input type="text" name="healthcare" placeholder=""><br><br>
+				
 				<input type="submit" name="login" class="login login-submit" value="Submit">
-		</form>
+			</form>
             		
 
         		</div>

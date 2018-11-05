@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2018 at 02:48 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Nov 01, 2018 at 07:04 AM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,21 +52,11 @@ CREATE TABLE `appointment` (
   `lname` varchar(40) NOT NULL,
   `Email` varchar(40) NOT NULL,
   `date1` date NOT NULL,
-  `Symptoms` varchar(128) NOT NULL,
+  `Symptoms` text NOT NULL,
   `department` varchar(40) NOT NULL,
-  `docemail` varchar(50) NOT NULL,
   `time1` varchar(40) NOT NULL,
   `status` varchar(10) NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `appointment`
---
-
-INSERT INTO `appointment` (`fname`, `lname`, `Email`, `date1`, `Symptoms`, `department`, `docemail`, `time1`, `status`) VALUES
-('Anjali', 'Sharma', 'Anjalis@gmail.com', '2018-11-17', 'fewer', 'Maternity ward', 'anjali@gmail.com', 'Afternoon', 'done'),
-('ganesh', 'Gaitonde', 'Ganesh@gmail.com', '2018-11-15', 'sar dard', 'Cardiology', 'anjali@gmail.com', 'morning', 'done'),
-('Rahul', 'Punjabi', 'rahul@gmail.com', '2018-11-15', 'qqqq', 'Cardiology', 'anjali@gmail.com', 'morning', 'noo');
 
 -- --------------------------------------------------------
 
@@ -117,7 +107,7 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`fname`, `lname`, `ssn`, `email`, `password`, `department`, `mobile_number`, `gender`, `status`) VALUES
-('Anjali', 'Sharma', 12345, 'anjali@gmail.com', 'Anjali@123', 'Cardiology', '9090909090', 'Female', 'inactive');
+('Anjali', 'Sharma', 12345, '', '', '', '', '', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -135,6 +125,30 @@ CREATE TABLE `files` (
 
 INSERT INTO `files` (`filename`) VALUES
 ('Topic.docx');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `homeinfo`
+--
+
+CREATE TABLE `homeinfo` (
+  `dream` longtext NOT NULL,
+  `vision` longtext NOT NULL,
+  `mission` longtext NOT NULL,
+  `brand` longtext NOT NULL,
+  `support` longtext NOT NULL,
+  `emergency` longtext NOT NULL,
+  `counseling` longtext NOT NULL,
+  `healthcare` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `homeinfo`
+--
+
+INSERT INTO `homeinfo` (`dream`, `vision`, `mission`, `brand`, `support`, `emergency`, `counseling`, `healthcare`) VALUES
+('Somaiya Hospital is a leading integrated healthcare delivery service provider in India. The healthcare verticals of the company primarily comprise hospitals, diagnostics and day care specialty facilities.', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -157,30 +171,8 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`fname`, `lname`, `mobile_number`, `email`, `password`, `gender`, `status`) VALUES
-('Anjali', 'Sharma', '9619139239', 'anjalis@gmail.com', 'Anjalis@123', 'female', 'inactive'),
-('ganesh', 'Gaitonde', '9010108765', 'ganesh@gmail.com', 'Ganesh@123', 'male', 'inactive'),
+('Anjali', 'Sharma', '9619139239', 'anjalis@gmail.com', 'Anjalis@123', 'female', 'active'),
 ('Rahul', 'Punjabi', '9619139239', 'rahul@gmail.com', 'Rahulp@123', 'male', 'inactive');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `profile`
---
-
-CREATE TABLE `profile` (
-  `email` varchar(120) NOT NULL,
-  `photo` varchar(100) NOT NULL,
-  `pset` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `profile`
---
-
-INSERT INTO `profile` (`email`, `photo`, `pset`) VALUES
-('anjali@gmail.com', 'd1.jpg', 'set'),
-('Anjalis@gmail.com', 'deepika.jfif', 'set'),
-('ganesh@gmail.com', 'newimg.jfif', 'set');
 
 --
 -- Indexes for dumped tables
@@ -221,12 +213,6 @@ ALTER TABLE `files`
 --
 ALTER TABLE `patient`
   ADD PRIMARY KEY (`email`);
-
---
--- Indexes for table `profile`
---
-ALTER TABLE `profile`
-  ADD UNIQUE KEY `email` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

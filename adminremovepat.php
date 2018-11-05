@@ -20,8 +20,8 @@ if($con == NULL){
 }
 
 mysqli_select_db($con, 'hospital');
-//selecting the task
-$admin_work = "add_account";
+
+$admin_work = "remove_patient";
 $_SESSION["admin_work"] = $admin_work;
 
 ?>
@@ -29,7 +29,7 @@ $_SESSION["admin_work"] = $admin_work;
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Add faculty or student</title>
+		<title>Remove faculty or student</title>
 		<link rel="stylesheet" type="text/css" href="bootstrap.css">
 		<link rel='stylesheet' href='http://codepen.io/assets/libs/fullpage/jquery-ui.css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -38,24 +38,6 @@ $_SESSION["admin_work"] = $admin_work;
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		
-
-		<script>
-				function checkForm(form)
-		  {
-			
-			re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
-			if (!re.test(form.email.value))
-			{
-				alert("You have entered an invalid email address!");
-				form.email.focus();
-				return (false);
-			}
-			
-		  }
-
-		</script>
-		
 	</head>	
 
 	<body>
@@ -114,33 +96,18 @@ $_SESSION["admin_work"] = $admin_work;
 
         	<div class="content">
 			
-            		<h2 style="margin-left:40px;">Add a Doctor's Account to Somaiya Hospital</h2>
-			<form onsubmit="return checkForm(this);" action="adminactivity.php" method="POST" style="margin-left:40px; font-size:18px;"><br>
-				First Name <input type="text" placeholder="First Name" name="fname"><br><br>
-				Last Name  <input type="text" placeholder="Last Name" name="lname"><br><br>
-				Social Security No.<input type="text" placeholder="S.S.N number" name="ssn"><br><br>
-				<!--<div id="department">
-					Department
-					<select name="department">
-						<option value="CRD">Cardiology</option>
-  						<option value="GP">General Physiology</option>
-						<option value="ENT">Otolaryngology</option>
-  						<option value="MTN">Maternity</option>
- 					</select><br><br>
-				</div>
-				-->
-				<input type="submit" name="login" class="login login-submit" value="Submit">
-		</form>
-            		
-
+            		<h2 style="margin-left:40px;">Remove Patient from Somaiya Hospital</h2>
+			<form action="adminactivity.php" method="POST" style="margin-left:40px; font-size:18px;"><br>
+				Patient's email<br><input type="text" placeholder="E-mail" name="email"><br><br>
+				
+				<input type="submit" name="login" class="login login-submit" value="Login">
+			</form>
         		</div>
-
 
 		</div>
 		<!-- #container -->
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 		<script src="js/admin.js"></script>
-		
 	</body>	
 </html>
