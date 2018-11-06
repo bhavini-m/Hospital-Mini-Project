@@ -110,8 +110,8 @@ if(move_uploaded_file($_FILES["photo"]["tmp_name"], $target))
   <div class="left">
 <div class="info">
 <p>HERE YOU CAN UPDATE YOUR PROFILE</p>
-<p>BOOK AN APPOINMENT WITH DOCTOR or CONSULT AN DOCTOR</p>
-<p>VIEW YOUR APPOINMENT STATUS AND REPORTS</p>
+<!--p>BOOK AN APPOINMENT WITH DOCTOR or CONSULT AN DOCTOR</p-->
+<!--p>VIEW YOUR APPOINMENT STATUS AND REPORTS</p-->
 <p>VIEW FEATURED EVENTS</p>
 </div> 
 <div class="featured">
