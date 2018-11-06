@@ -6,9 +6,8 @@ use PHPMailer\PHPMailer\Exception;
 
 //Load Composer's autoloader
 require 'vendor/autoload.php';
-echo"here";
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-try {echo"here2 ";
+try {
     //Server settings
     $mail->SMTPDebug = 0;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -21,7 +20,7 @@ try {echo"here2 ";
 
     //Recipients
     $mail->setFrom('somaiyahospital@gmail.com', 'Somaiya Hospital');
-    $mail->addAddress("rpunjabi900@gmail.com");     // Add a recipient
+    $mail->addAddress($email);     // Add a recipient
     $mail->addReplyTo('somaiyahospital@gmail.com', 'Somaiya Hospital');
 
 
@@ -44,12 +43,10 @@ try {echo"here2 ";
     // }
 
     $mail->Body  = "<P>lol this is a test message to see if i get mail mann</p>";
-    echo" hereasweeell";
     $mail->send();
-    echo"mailsend";
     $_SESSION['message'] = "email sent successfully";
 } catch (Exception $e) {
     $_SESSION['message'] = 'Email could not be sent. '. $mail->ErrorInfo;
-	echo $_SESSION['message'];
+
 }
 ?>

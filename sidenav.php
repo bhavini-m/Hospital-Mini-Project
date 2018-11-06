@@ -109,9 +109,8 @@ margin-left: 50px;
   </span>
   <div class="dropdown-container">
     <a href="bapp.php">Book</a>
-    <a href="#">Check Status</a>
   </div>
-  <li class="list-item"><a href="#">Check Reports</a></li>
+  <li class="list-item"><a href="pat_report.php">Check Reports</a></li>
   <li class="list-item"><a href="pay_fee.html">Pay</a></li>
   <li class="list-item"><a href="logout.php">Logout</a></li>
 

@@ -53,8 +53,8 @@ if(mysqli_query($link, $sql))
 {
  //appointment added 
 }
-
-//include("Email/appointmentfixed.php");
+$email=$_SESSION['email'];
+include("Email/appointmentfixed.php");
 } 
 ?>
 <style type="text/css">
