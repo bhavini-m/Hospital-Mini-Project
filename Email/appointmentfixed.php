@@ -42,7 +42,7 @@ try {
     //     $template = str_replace('{{ '.$key.' }}', $value, $template);
     // }
 
-    $mail->Body  = "<P>lol this is a test message to see if i get mail mann</p>";
+    $mail->Body  = "<P>Your appointment is confirmed.</p>";
     $mail->send();
     $_SESSION['message'] = "email sent successfully";
 } catch (Exception $e) {
