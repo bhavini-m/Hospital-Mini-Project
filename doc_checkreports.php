@@ -50,7 +50,7 @@ if($link === false){
 
 </div>
 <div class="footer">
-<P> © Copyright RAHULPUNJABI TRUST. All Rights Reserved. </P>
+<P> © Copyright Somaiya TRUST. All Rights Reserved. </P>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

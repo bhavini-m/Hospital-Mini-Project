@@ -49,17 +49,17 @@ if($num == 1){
 		
 		$qy= " insert  into patient(fname , lname, mobile_number, email, password , gender ) values ('$fname' , '$lname', '$mobile', '$email', '$password' , '$gender' ) ";
 	}else {
-		$q1 = " select * from admin where ssn = '$ssn' ";
-		$result1 = mysqli_query($con, $q1);
-		$num1 = mysqli_num_rows($result1);
-		if ($num1 == 1)
-		{
-		$qy = " insert into doctor(fname, lname , email, password , department, mobile_number, gender) values ('$fname', '$lname', '$email', '$password', '$dept', '$mobile', '$gender') "; 	
-		}
-		else
-		{
+		// $q1 = " select * from admin where ssn = '$ssn' ";
+		// $result1 = mysqli_query($con, $q1);
+		// $num1 = mysqli_num_rows($result1);
+		// if ($num1 == 1)
+		// {
+		$qy = " insert into doctor(fname, lname , email, password , department, mobile_number, gender,ssn) values ('$fname', '$lname', '$email', '$password', '$dept', '$mobile', '$gender','$ssn') "; 	
+		// }
+		// else
+		// {
 			
-		}
+		// }
 	}
 	mysqli_query($con, $qy);
 	$_SESSION['user'] = $fname;

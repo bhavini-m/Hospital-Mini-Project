@@ -20,7 +20,7 @@ img{
 	a:link{
 		text-decoration: none;
 	}
-	.submit a{
+	.submit input{
 		margin:0 40%;
 		padding:5px;
 		text-align: center;
@@ -83,7 +83,7 @@ $row2=mysqli_fetch_assoc($result2);
 <br>
 <br>
 <div class="submit">
-<a href="#">SUBMIT REPORTS</a>
+<input type="file" name="report">
 </div>
 </div>
 <br><br> 
