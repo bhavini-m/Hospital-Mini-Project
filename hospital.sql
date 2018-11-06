@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2018 at 04:30 PM
+-- Generation Time: Nov 06, 2018 at 02:27 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -50,7 +50,7 @@ INSERT INTO `admin` (`email`, `password`, `status`) VALUES
 CREATE TABLE `appointment` (
   `fname` varchar(40) NOT NULL,
   `lname` varchar(40) NOT NULL,
-  `Email` varchar(40) NOT NULL,
+  `Email` varchar(100) NOT NULL,
   `date1` date NOT NULL,
   `Symptoms` varchar(128) NOT NULL,
   `department` varchar(40) NOT NULL,
@@ -64,9 +64,12 @@ CREATE TABLE `appointment` (
 --
 
 INSERT INTO `appointment` (`fname`, `lname`, `Email`, `date1`, `Symptoms`, `department`, `docemail`, `time1`, `status`) VALUES
-('Anjali', 'Sharma', 'Anjalis@gmail.com', '2018-11-17', 'fewer', 'Maternity ward', 'anjali@gmail.com', 'Afternoon', 'done'),
-('ganesh', 'Gaitonde', 'Ganesh@gmail.com', '2018-11-15', 'sar dard', 'Cardiology', 'anjali@gmail.com', 'morning', 'done'),
-('Rahul', 'Punjabi', 'rahul@gmail.com', '2018-11-15', 'qqqq', 'Cardiology', 'anjali@gmail.com', 'morning', 'noo');
+('Anjali', 'Sharma', '', '2018-11-17', 'fewer', 'Maternity ward', 'anjali@gmail.com', 'Afternoon', 'noo'),
+('ganesh', 'Gaitonde', '', '2018-11-15', 'sar dard', 'Cardiology', 'anjali@gmail.com', 'morning', 'done'),
+('Rahul', 'Punjabi', '', '2018-11-08', 'fewer', 'Cardiology', 'manish@gmail.com', 'morning', 'noo'),
+('Rahul', 'Punjabi', 'rahul@gmail.com', '2018-11-16', 'fewer', 'ENT ward', 'mohit@gmail.com', 'Evening', 'done'),
+('Rahul', 'Punjabi', 'rahul@gmail.com', '2018-11-16', 'fewer', 'ENT ward', 'mohit@gmail.com', 'Evening', 'done'),
+('Rahul', 'Punjabi', 'rahul@gmail.com', '2018-11-08', 'legpain', 'Maternity ward', 'mohit@gmail.com', 'Afternoon', 'done');
 
 -- --------------------------------------------------------
 
@@ -117,6 +120,8 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`fname`, `lname`, `ssn`, `email`, `password`, `department`, `mobile_number`, `gender`, `status`) VALUES
+('manish', 'pandey', 2018, 'manish@gmail.com', 'Manish@123', 'cardiology', '9011037379', 'male', 'inactive'),
+('mohit', 'punjabi', 2019, 'mohit@gmail.com', 'Mohit@123', 'Maternity', '9011037370', 'male', 'inactive'),
 ('Anjali', 'Sharma', 12345, 'anjali@gmail.com', 'Anjali@123', 'Cardiology', '9090909090', 'Female', 'inactive');
 
 -- --------------------------------------------------------
@@ -137,6 +142,11 @@ INSERT INTO `files` (`filename`) VALUES
 ('Topic.docx');
 
 -- --------------------------------------------------------
+
+--
+-- Table structure for table `homeinfo`
+--
+
 CREATE TABLE `homeinfo` (
   `dream` longtext NOT NULL,
   `vision` longtext NOT NULL,
@@ -154,6 +164,9 @@ CREATE TABLE `homeinfo` (
 
 INSERT INTO `homeinfo` (`dream`, `vision`, `mission`, `brand`, `support`, `emergency`, `counseling`, `healthcare`) VALUES
 ('Somaiya Hospital is a leading integrated healthcare delivery service provider in India. The healthcare verticals of the company primarily comprise hospitals, diagnostics and day care specialty facilities.', '', '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `patient`
 --
@@ -196,7 +209,32 @@ CREATE TABLE `profile` (
 INSERT INTO `profile` (`email`, `photo`, `pset`) VALUES
 ('anjali@gmail.com', 'deepika.jfif', 'set'),
 ('Anjalis@gmail.com', 'deepika.jfif', 'set'),
-('ganesh@gmail.com', 'newimg.jfif', 'set');
+('ganesh@gmail.com', 'newimg.jfif', 'set'),
+('rahul@gmail.com', 'deepika.jfif', 'set');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `report`
+--
+
+CREATE TABLE `report` (
+  `doc_ID` varchar(50) NOT NULL,
+  `pat_ID` varchar(50) NOT NULL,
+  `report` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `report`
+--
+
+INSERT INTO `report` (`doc_ID`, `pat_ID`, `report`) VALUES
+('anjali@gmail.com', 'Anjalis@gmail.com', 'default.png'),
+('anjali@gmail.com', 'Anjalis@gmail.com', 'deepika.jfif'),
+('anjali@gmail.com', 'Anjalis@gmail.com', 'deepika.jfif'),
+('anjali@gmail.com', 'Anjalis@gmail.com', 'deepika.jfif'),
+('anjali@gmail.com', 'rahul@gmail.com', 'default.png'),
+('mohit@gmail.com', 'rahul@gmail.com', 'deepika.jfif');
 
 --
 -- Indexes for dumped tables
@@ -207,12 +245,6 @@ INSERT INTO `profile` (`email`, `photo`, `pset`) VALUES
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`email`);
-
---
--- Indexes for table `appointment`
---
-ALTER TABLE `appointment`
-  ADD PRIMARY KEY (`Email`);
 
 --
 -- Indexes for table `department`
