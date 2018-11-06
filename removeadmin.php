@@ -74,7 +74,7 @@ function checkForm(form)
         		<div class="sidebar">
             	<ul id="nav" style="font-size:18px;">
                		<li>
-                   		<a class="selected" href="#">Home</a>
+                   		<a class="selected" href="adminhome.php">Home</a>
                 	</li>
 					
                 	<li>
@@ -115,7 +115,7 @@ function checkForm(form)
 
         	<div class="content">
 			
-            		<h2 style="margin-left:40px;">Add Admin</h2>
+            		<h2 style="margin-left:40px;">Remove Admin</h2>
 			<form action="adminactivity.php" method="POST" style="margin-left:40px; font-size:18px;"><br>
 				Admin Email<br><input type="text" placeholder="Admin Email" name="email"><br><br>
 				

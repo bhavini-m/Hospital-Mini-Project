@@ -133,7 +133,7 @@ $email = $_SESSION['email'];
         	<div class="sidebar">
             	<ul id="nav" style="font-size:18px;">
                		<li>
-                   		<a class="selected" href="#">Home</a>
+                   		<a class="selected" href="adminhome.php">Home</a>
                 	</li>
 					
                 	<li>
