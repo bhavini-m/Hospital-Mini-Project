@@ -84,7 +84,7 @@ $row2=mysqli_fetch_assoc($result2);
 <div class="submit">
 
 
-	<form action="view_pat.php" method="POST" enctype="multipart/form-data">
+	<form  method="POST" enctype="multipart/form-data">
   <input type="file" name="reportf"><br><br>
   <input type="submit" name="report" value="Report submit">
 </form>
@@ -116,12 +116,7 @@ header("location:doc_pat.php");
 
 if(isset($_POST['report'])){
 
-
-
-
-
-
-$target="report/".basename($_FILES["reportf"]["name"]);
+$target="reports/".basename($_FILES["reportf"]["name"]);
 $rep=$_FILES["reportf"]["name"];
 
 $sql="INSERT INTO report VALUES('$email','$mail','$rep')";
