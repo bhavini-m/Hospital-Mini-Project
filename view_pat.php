@@ -1,7 +1,6 @@
 <?php 
 session_start();
-
-
+$email=$_SESSION['email'];
 ?>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <style type="text/css">
@@ -22,7 +21,7 @@ img{
 	}
 	.submit input{
 		margin:0 40%;
-		padding:5px;
+		
 		text-align: center;
 		border:2px solid #03296d;
 		background-color: #03296d;
@@ -83,7 +82,14 @@ $row2=mysqli_fetch_assoc($result2);
 <br>
 <br>
 <div class="submit">
-<input type="file" name="report">
+
+
+	<form action="view_pat.php" method="POST" enctype="multipart/form-data">
+  <input type="file" name="reportf"><br><br>
+  <input type="submit" name="report" value="Report submit">
+</form>
+
+
 </div>
 </div>
 <br><br> 
@@ -106,6 +112,22 @@ if(isset($_POST['done'])){
 $ss="update appointment set status='done' where Email='$mail'";
 mysqli_query($link,$ss); 
 header("location:doc_pat.php");
+}
+
+if(isset($_POST['report'])){
+
+
+
+
+
+
+$target="report/".basename($_FILES["reportf"]["name"]);
+$rep=$_FILES["reportf"]["name"];
+
+$sql="INSERT INTO report VALUES('$email','$mail','$rep')";
+mysqli_query($link,$sql);
+if(move_uploaded_file($_FILES["reportf"]["tmp_name"], $target))
+  $msg="image uploaded";	
 }
 
 }
